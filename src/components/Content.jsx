@@ -19,6 +19,7 @@ const Content = () => {
           message: `${name} can not be empty`,
         });
       } else {
+        console.log(formError.concernedField === name, formData["user-type"]);
         if (formError.concernedField === name) {
           setFormError({
             concernedField: "",
@@ -114,13 +115,6 @@ const Content = () => {
             });
             return;
           }
-          if (formData["user-type"] === "") {
-            setFormError({
-              concernedField: "user-type",
-              message: "type cannot be empty",
-            });
-            return;
-          }
           if (formData.password.length < 8) {
             setFormError({
               concernedField: "password",
@@ -208,7 +202,7 @@ const Content = () => {
             formError.concernedField === "user-type" ? "error-div" : ""
           }
         >
-          <option value="">I would describe my user types as</option>
+          <option value="">I would describe my user type as</option>
           <option value="1">Developer</option>
           <option value="2">Product Designer</option>
           <option value="3">Assistant</option>
